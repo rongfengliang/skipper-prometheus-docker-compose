@@ -1,0 +1,24 @@
+version: "3"
+services:
+  skipper:
+    image: dalongrong/skipper:latest
+    ports:
+    - "9090:9090"
+    - "9911:9911"
+    volumes:
+    - "./router.eskip:/router.eskip"
+    command: skipper -enable-ratelimits -enable-prometheus-metrics -routes-file router.eskip
+  g:
+    image: grafana/grafana
+    ports:
+    - "3000:3000"
+  web:
+    image: nginx
+    ports:
+    - "8099:80"
+  p:
+    image: prom/prometheus
+    volumes:
+    - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+    ports:
+    - "9091:9090"
