@@ -7,6 +7,7 @@ services:
     - "9911:9911"
     volumes:
     - "./router.eskip:/router.eskip"
+    - "./app.lua:/app.lua"
     command: skipper -enable-ratelimits -enable-prometheus-metrics -routes-file router.eskip
   g:
     image: grafana/grafana
