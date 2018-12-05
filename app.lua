@@ -1,3 +1,6 @@
+
+local uuid = require("uuid")
+local json = require("json")
 function request(ctx, params)
     -- ctx.serve({
     --     status_code=302,
@@ -9,17 +12,21 @@ function request(ctx, params)
 end
 
 function response(ctx, params)
-    local json = require("json")
     ctx.response.header["lua_token"]="dalongdemo";
     -- local user = {
     --     name="dalong",
     --     age=33
     -- }
-    -- ctx.serve({
-    --     status_code=200,
-    --     header= {
-    --         ['Content-Type']="application/json"
-    --     },
-    --     body=json.encode(ctx.response)
-    -- })
+    local tokeninfo = {
+        token=uuid(),
+        status=200
+    }
+    ctx.serve({
+        status_code=200,
+        header= {
+            ['Content-Type']="application/json",
+            lua_token=uuid()
+        },
+        body=json.encode(tokeninfo)
+    })
 end

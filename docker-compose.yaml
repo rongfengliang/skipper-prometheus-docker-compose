@@ -2,7 +2,8 @@ version: "3"
 services:
   skipper:
     #image: dalongrong/skipper:latest
-    image: dalongrong/skipper-docker-build
+    build: ./
+    image: dalongrong/skipper-docker-build-luarocks
     ports:
     - "9090:9090"
     - "9911:9911"
