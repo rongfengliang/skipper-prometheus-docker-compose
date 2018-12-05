@@ -1,4 +1,4 @@
 hello: Path("/report/**") ->compress("text/html")-> corsOrigin()->setResponseHeader("TOKEN","dalongdemo")->responseCookie("test-session", "abc", 31536000)->
 setRequestHeader("TOKEN","dalongdemo")-> "http://10.10.17.21:9000/report";
-app: Path("/users/**") -> lua("/app.lua", "myparam=foo", "other=bar") -> "http://www.baidu.com";
+app: Path("/users/**") ->corsOrigin()->compress("application/json")->lua("/app.lua", "myparam=foo", "other=bar") -> "http://www.baidu.com";
 static: Path("/static/*") -> static("/static/", "/root") -> <shunt>;

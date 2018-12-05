@@ -1,6 +1,7 @@
 
 local uuid = require("uuid")
 local json = require("json")
+local cuid = require("cuid")
 function request(ctx, params)
     -- ctx.serve({
     --     status_code=302,
@@ -17,9 +18,13 @@ function response(ctx, params)
     --     name="dalong",
     --     age=33
     -- }
+    local id = cuid.generate ( )
+    local slug = cuid.slug ( )
     local tokeninfo = {
         token=uuid(),
-        status=200
+        status=200,
+        id=id,
+        slug=slug
     }
     ctx.serve({
         status_code=200,

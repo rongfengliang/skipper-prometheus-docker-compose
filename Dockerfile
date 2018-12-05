@@ -6,5 +6,5 @@ WORKDIR /
 COPY --from=build /usr/bin/skipper /skipper
 COPY --from=build /usr/bin/eskip /eskip
 ENV PATH=$PATH:/
-RUN luarocks install uuid
+RUN luarocks install uuid && luarocks  install cuid
 
