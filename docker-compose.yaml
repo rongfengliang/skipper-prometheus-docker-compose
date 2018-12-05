@@ -10,6 +10,7 @@ services:
     volumes:
     - "./router.eskip:/router.eskip"
     - "./app.lua:/app.lua"
+    - "./response.lua:/response.lua"
     command: skipper -enable-ratelimits -enable-prometheus-metrics -routes-file /router.eskip
   g:
     image: grafana/grafana
