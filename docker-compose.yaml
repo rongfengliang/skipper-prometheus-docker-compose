@@ -16,9 +16,13 @@ services:
     ports:
     - "3000:3000"
   web:
-    image: nginx
+    build: 
+      context: ./
+      dockerfile: Dockerfile-ip
+    image: dalongrong/openresty-ip
     ports:
     - "8099:80"
+    - "8100:88"
   p:
     image: prom/prometheus
     volumes:
